@@ -49,8 +49,13 @@ namespace fs_project.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NoteID,UserID,NoteName,NoteContent,CreateAt")] Note note)
-        {
+        public ActionResult Create([Bind(Include = "NoteID,UserID,NoteName,NoteContent,CreateAt")] Note note) { 
+        
+            if (note.CreateAt == null)
+            {
+                note.CreateAt = DateTime.Now;
+            }
+
             if (ModelState.IsValid)
             {
                 db.Notes.Add(note);
