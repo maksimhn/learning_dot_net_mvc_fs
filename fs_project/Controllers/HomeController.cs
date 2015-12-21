@@ -8,6 +8,10 @@ namespace fs_project.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Notes()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View();
